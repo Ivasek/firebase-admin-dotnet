@@ -48,7 +48,7 @@ namespace FirebaseAdmin.Messaging
             };
             AnalyticsLabelChecker.ValidateAnalyticsLabel(copy.AnalyticsLabel);
 
-            if (copy.ImageUrl != null && !Uri.IsWellFormedUriString(copy.ImageUrl, UriKind.Absolute))
+            if (copy.ImageUrl != null && !Uri.TryCreate(copy.ImageUrl, UriKind.Absolute, out _))
             {
                 throw new ArgumentException($"Malformed image URL string: {copy.ImageUrl}.");
             }
