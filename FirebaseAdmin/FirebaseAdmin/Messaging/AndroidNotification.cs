@@ -475,7 +475,7 @@ namespace FirebaseAdmin.Messaging
                 throw new ArgumentException("BodyLocKey is required when specifying BodyLocArgs.");
             }
 
-            if (copy.ImageUrl != null && !Uri.IsWellFormedUriString(copy.ImageUrl, UriKind.Absolute))
+            if (copy.ImageUrl != null && !Uri.TryCreate(copy.ImageUrl, UriKind.Absolute, out _))
             {
                 throw new ArgumentException($"Malformed image URL string: {copy.ImageUrl}.");
             }
